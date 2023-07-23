@@ -5,12 +5,13 @@ import { saveToStorage } from './auth.helper'
 
 export const AuthService = {
 	async main(type: 'login' | 'register', data: IEmailPassword) {
-		const response = await instance.post<IAuthResponse>(`/auth/${type}`, {
+		const response = await instance<IAuthResponse>({
+			url: `/auth/${type}`,
+			method: 'POST',
 			data
 		})
 
 		if (response.data.accessToken) saveToStorage(response.data)
-
 		return response.data
 	},
 

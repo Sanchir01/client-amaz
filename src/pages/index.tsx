@@ -1,10 +1,8 @@
-import { NextPageAuth } from '@/providers/auth-providers/auth-page.types'
+import Home from '@/components/screens/Home/Home'
+import { NextPage } from 'next'
 
-const Home: NextPageAuth = () => {
-	
-	return (
-		<h1 className='text-3xl font-bold underline '>Hello world! 123213214</h1>
-	)
+const HomePage: NextPage = () => {
+	return <Home />
 }
 
-export default Home
+export default HomePage

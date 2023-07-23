@@ -1,4 +1,4 @@
-import '@/assets/styles/globals.css'
+import '@/assets/styles/globals.scss'
 import AuthProvider from '@/providers/auth-providers/AuthProvider'
 import { TypeComponentAuthFields } from '@/providers/auth-providers/auth-page.types'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
