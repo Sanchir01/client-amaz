@@ -3,6 +3,11 @@ import { AuthService } from '@/service/auth/auth.service'
 import axios from 'axios'
 import { errorCatch, getContentType } from './api.helper'
 
+export const axiosClassic = axios.create({
+	baseURL: process.env.SERVER_URL,
+	headers: getContentType()
+})
+
 export const instance = axios.create({
 	baseURL: process.env.SERVER_URL,
 	headers: getContentType()
@@ -23,7 +28,7 @@ instance.interceptors.response.use(
 		const originalRequest = error.config
 
 		if (
-			(error.response.states === 401 ||
+			(error?.response?.status === 401 ||
 				errorCatch(error) === 'jwt expired' ||
 				errorCatch(error) === 'jwt must be provided') &&
 			error.config &&

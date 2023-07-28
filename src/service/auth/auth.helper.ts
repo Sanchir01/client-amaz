@@ -6,7 +6,7 @@ export const getAccessToken =  () => {
 	return accessToken || null
 }
 
-export const getUserFromStorage = async () => {
+export const getUserFromStorage =  () => {
 	return JSON.parse(localStorage.getItem('user') || '{}')
 }
 

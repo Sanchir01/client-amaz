@@ -1,3 +1,5 @@
+import { IProduct } from '@/types/product.interface'
+
 export type TypeProductData = {
 	name: string
 	price: number
@@ -14,8 +16,9 @@ export type TypeProductDataFilters = {
 }
 
 export enum EnumProductSort {
-	HIGH_PRICE = 'high_price',
-	LOW_PRICE = 'low_price',
+	HIGH_PRICE = 'hight-price',
+	LOW_PRICE = 'low-price',
 	NEWEST = 'newest',
 	OLDEST = 'oldest'
 }
+

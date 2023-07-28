@@ -12,7 +12,6 @@ export const titleMeta = (title: string) => `${title} | Amazon 2`
 
 export const Meta: FC<PropsWithChildren<ISeo>> = ({
 	title,
-	image,
 	children,
 	description
 }) => {

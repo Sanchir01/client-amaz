@@ -21,7 +21,7 @@ export const Button: FC<PropsWithChildren<IButton>> = ({
 					'text-white  bg-primary': variant === 'dark',
 					'text-primary bg-white': variant === 'light'
 				},
-				'rounded-xl font-medium shadow py-2 px-10'
+				'rounded-xl font-medium shadow py-2 px-10 hover:shadow-lg transition duration-300 ease-in-out'
 			)}
 		>
 			{children}

@@ -10,7 +10,6 @@ import { Meta } from '../../ui/meta'
 import { useAuthRedirect } from './useAuthRedirect'
 import { validEmail } from './valid-email'
 
-
 const Auth: FC = () => {
 	useAuthRedirect()
 	const { isLoading } = useAuth()

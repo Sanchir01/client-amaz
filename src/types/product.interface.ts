@@ -17,3 +17,10 @@ export interface IProduct {
 export interface IProductDetails {
 	product: IProduct
 }
+export type TypeProduct = {
+	products: IProduct[]
+}
+export type TypePaginationProduct = {
+	length:number
+	products: IProduct[]
+}

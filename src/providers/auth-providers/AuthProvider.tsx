@@ -28,6 +28,7 @@ const AuthProvider: FC<PropsWithChildren<TypeComponentAuthFields>> = ({
 	}, [pathname])
 
 	
+	
 	return isOnlyUser ? (
 		<DynamicCheckRole Component={{ isOnlyUser }}>{children}</DynamicCheckRole>
 	) : (
