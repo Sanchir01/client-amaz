@@ -1,19 +1,19 @@
+'use client'
 import SquareButton from '@/components/ui/button/SquareButton'
+import { Button } from '@/components/ui/button/button'
 import { useCart } from '@/hooks/useCart'
 import { useOutside } from '@/hooks/useOutside'
 import cn from 'clsx'
-import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { RiShoppingCartLine } from 'react-icons/ri'
 import CartItem from './CartItem/CartItem'
-import { Button } from '@/components/ui/button/button'
 
 const HeaderCart: FC = () => {
 	const { ref, isShow, setIsShow } = useOutside(false)
 
 	const { items, total } = useCart()
 
-	const { push } = useRouter()
+
 	return (
 		<div className='relative' ref={ref}>
 			<SquareButton

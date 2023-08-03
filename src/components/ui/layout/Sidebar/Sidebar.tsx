@@ -1,10 +1,12 @@
+'use client'
 import { useActions } from '@/hooks/useActions'
-import { useAuth } from '@/hooks/useAuth'
 import { CategoryService } from '@/service/category/category.service'
 import { useQuery } from '@tanstack/react-query'
 import cn from 'clsx'
+
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
+
 import { FC } from 'react'
 import { FiLogOut } from 'react-icons/fi'
 
@@ -17,8 +19,8 @@ const Sidebar: FC = () => {
 		}
 	)
 
-	const { asPath } = useRouter()
-	const { user } = useAuth()
+	const asPath = usePathname()
+
 	const { logout } = useActions()
 	return (
 		<aside
@@ -58,7 +60,7 @@ const Sidebar: FC = () => {
 				onClick={() => logout()}
 			>
 				<FiLogOut />
-        <span className='ml-2'> Logout</span>
+				<span className='ml-2'> Logout</span>
 			</button>
 		</aside>
 	)

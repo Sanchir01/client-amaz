@@ -1,3 +1,4 @@
+'use client'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import {
 	FLUSH,
@@ -9,10 +10,10 @@ import {
 	persistReducer,
 	persistStore
 } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
 
-import { userSlice } from './user/user.slice'
 import { cartSlice } from './cart/cart.slice'
+import { userSlice } from './user/user.slice'
+import storage from 'redux-persist/lib/storage'
 
 const persistConfig = {
 	key: 'amazon-2',
@@ -26,7 +27,6 @@ const rootReducer = combineReducers({
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
-
 export const store = configureStore({
 	reducer: persistedReducer,
 	middleware: getDefaultMiddleware =>
@@ -39,4 +39,4 @@ export const store = configureStore({
 
 export const persistor = persistStore(store)
 
-export type TypeRootState = ReturnType<typeof rootReducer>
+export type TypeRootState = ReturnType<typeof persistedReducer>

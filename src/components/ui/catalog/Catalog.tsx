@@ -1,3 +1,4 @@
+'use client'
 import { ProductService } from '@/service/product/product.service'
 import { EnumProductSort } from '@/service/product/product.types'
 import { TypePaginationProduct } from '@/types/product.interface'

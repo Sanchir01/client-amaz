@@ -1,39 +1,48 @@
+'use client'
+import { ADMIN_PANEL_URL } from '@/config/url.config'
+import { REFRESH_TOKEN } from '@/constants/token.constants'
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 import { getAccessToken } from '@/service/auth/auth.helper'
 import Cookies from 'js-cookie'
-import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 import { FC, PropsWithChildren, useEffect } from 'react'
-import { TypeComponentAuthFields } from './auth-page.types'
+import { protectedRoutes } from './Protected-routes'
+import NotFound from '@/app/not-found'
 
-const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false })
-
-const AuthProvider: FC<PropsWithChildren<TypeComponentAuthFields>> = ({
-	Component: { isOnlyUser },
-	children
-}) => {
+const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	const { user } = useAuth()
 	const { logout, checkAuth } = useActions()
-	const { pathname } = useRouter()
+	const pathName = usePathname()
 	useEffect(() => {
 		const accessToken = getAccessToken()
 		if (accessToken) checkAuth()
 	}, [])
 
-	
 	useEffect(() => {
-		const refreshToken = Cookies.get('refreshToken')
+		const refreshToken = Cookies.get(REFRESH_TOKEN)
 		if (!refreshToken && user) logout()
-	}, [pathname])
+	}, [pathName])
 
-	
-	
-	return isOnlyUser ? (
-		<DynamicCheckRole Component={{ isOnlyUser }}>{children}</DynamicCheckRole>
-	) : (
-		<>{children}</>
+	const router = useRouter()
+
+	const isProtectedRoute = protectedRoutes.some(route =>
+		pathName?.startsWith(route)
 	)
+
+	const isAdminRoute = pathName?.startsWith(ADMIN_PANEL_URL)
+
+	if (!isAdminRoute && !isProtectedRoute) return <>{children}</>
+
+	if (user?.isAdmin) return <>{children}</>
+
+	if(user && isProtectedRoute) return <>{children}</>
+
+	if(user && isAdminRoute) return <><NotFound/></>
+	
+	pathName !== '/auth ' && router.replace('/auth')
+	 
+	return null
 }
 
 export default AuthProvider

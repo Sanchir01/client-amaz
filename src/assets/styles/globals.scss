@@ -15,12 +15,20 @@ body {
 	opacity: 0.2 !important;
 }
 
-.open-menu {
-	opacity: 1;
-	transform: scale(1);
-}
-
-.close-menu {
-	opacity: 0;
-	transform: scale(0.8);
+.btn {
+	@apply rounded-xl font-medium shadow py-2 px-10 hover:shadow-lg transition duration-300 ease-in-out;
+	
+	&:not(&:disabled) {
+		@apply hover:shadow-lg;
+	}
+	&.btn-white {
+		@apply bg-white text-primary;
+	}
+	&.btn-orange {
+		@apply bg-primary text-white;
+	}
+	&.btn-large {
+		@apply px-12 py-4 text-xl;
+	}
+	
 }

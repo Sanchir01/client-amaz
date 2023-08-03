@@ -6,7 +6,7 @@ export const CategoryService = {
 		return axiosClassic.get<ICategory[]>('/category')
 	},
 	async getById(id: string | number) {
-		return instance.get<ICategory>(`/category/${id}`)
+		return instance.get<ICategory>(`/category/by-di/${id}`)
 	},
 	async getBySlug(slug: string) {
 		return instance({
