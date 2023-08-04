@@ -11,7 +11,7 @@ const Home: FC<TypePaginationProduct> = ({ products, length }) => {
 	return (
 		<>
 			{!!user && <button onClick={() => logout()}>Logout</button>}
-			<Catalog data={{ products, length }} title='Freshed Products' />
+			<Catalog products={products} title='Freshed Products' />
 		</>
 	)
 }

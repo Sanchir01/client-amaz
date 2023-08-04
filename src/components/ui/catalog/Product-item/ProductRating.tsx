@@ -3,14 +3,19 @@ import { IProduct } from '@/types/product.interface'
 import { FC, useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
-const ProductRating: FC<{ product: IProduct }> = ({ product }) => {
+interface IProductRating {
+	product: IProduct
+	isText?: boolean
+}
+
+const ProductRating: FC<IProductRating> = ({ product, isText = false }) => {
 	const [rating, setRating] = useState<number>(
 		Math.floor(
 			product.reviews.reduce((acc, review) => acc * review.rating, 0) /
 				product.reviews.length
 		) || 0
 	)
-	
+
 	return (
 		<div>
 			{!!product.reviews.length && (
@@ -24,7 +29,9 @@ const ProductRating: FC<{ product: IProduct }> = ({ product }) => {
 						transition
 					/>
 					<span style={{ color: '#ffbc0d' }}>{rating}</span>
-					<span>({product.reviews.length} reviews)</span>
+					{isText && (
+						<span className='text-xs'>({product.reviews.length} reviews)</span>
+					)}
 				</span>
 			)}
 		</div>

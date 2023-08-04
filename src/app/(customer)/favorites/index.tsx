@@ -1,4 +1,4 @@
-import CatalogNoPagination from '@/components/ui/catalog/CatalogNoPagination'
+import CatalogNoPagination from '@/components/ui/catalog/Catalog'
 
 import { useProfile } from '@/hooks/useProfile'
 import { NextPage } from 'next'

@@ -2,8 +2,7 @@ import { CategoryService } from '@/service/category/category.service'
 import { ProductService } from '@/service/product/product.service'
 import { IPageSlugParam, TypeParamSlug } from '@/types/page-params'
 
-import CatalogNoPagination from '@/components/ui/catalog/CatalogNoPagination'
-import Layout from '@/components/ui/layout/Layout'
+import CatalogNoPagination from '@/components/ui/catalog/Catalog'
 
 export const revalidate = 60
 
