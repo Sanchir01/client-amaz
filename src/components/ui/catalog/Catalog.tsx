@@ -5,7 +5,8 @@ import ProductItem from './Product-item/ProductItem'
 
 interface ICatalog {
 	products: IProduct[]
-	title?: string
+	title?: string,
+	isLoading:boolean
 }
 
 const Catalog: FC<ICatalog> = ({ products, title }) => {

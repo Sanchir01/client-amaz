@@ -7,5 +7,11 @@ export const OrderService = {
 			url: '/orders',
 			method: 'GET'
 		})
+	},
+
+	async getByUserId(){
+		return instance<IOrders[]>({
+			url:'/orders/by-user'
+		})
 	}
 }

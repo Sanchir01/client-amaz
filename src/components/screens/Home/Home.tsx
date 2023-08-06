@@ -1,16 +1,14 @@
 'use client'
+import Carousel from '@/components/ui/carousel/Carousel'
 import Catalog from '@/components/ui/catalog/Catalog'
-import { useActions } from '@/hooks/useActions'
-import { useAuth } from '@/hooks/useAuth'
+import { carouselItems } from '@/constants/carousel.data'
 import { TypePaginationProduct } from '@/types/product.interface'
 import { FC } from 'react'
 
 const Home: FC<TypePaginationProduct> = ({ products, length }) => {
-	const { user } = useAuth()
-	const { logout } = useActions()
 	return (
 		<>
-			{!!user && <button onClick={() => logout()}>Logout</button>}
+			<Carousel items={carouselItems} className='mb-10' />
 			<Catalog products={products} title='Freshed Products' />
 		</>
 	)

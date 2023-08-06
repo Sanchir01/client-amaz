@@ -19,6 +19,10 @@ export type TypeProductDataFilters = {
 	categoryId?:string
 }
 
+export type TypeParamFilters = {
+	searchParams:TypeProductDataFilters
+}
+
 export enum EnumProductSort {
 	HIGH_PRICE = 'hight-price',
 	LOW_PRICE = 'low-price',

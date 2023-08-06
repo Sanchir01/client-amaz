@@ -1,11 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap');
 
 body {
-	@apply text-base text-black;
-	font-family: 'Golos Text', sans-serif;
+	@apply overflow-x-hidden bg-bg-color text-base text-black;
+	font-family: var(--font-golos), sans-serif;
 }
 
 .disabled {
@@ -17,7 +16,7 @@ body {
 
 .btn {
 	@apply rounded-xl font-medium shadow py-2 px-10 hover:shadow-lg transition duration-300 ease-in-out;
-	
+
 	&:not(&:disabled) {
 		@apply hover:shadow-lg;
 	}
@@ -30,5 +29,4 @@ body {
 	&.btn-large {
 		@apply px-12 py-4 text-xl;
 	}
-	
 }

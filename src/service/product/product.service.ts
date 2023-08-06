@@ -18,10 +18,11 @@ export const ProductService = {
 		})
 	},
 	async getBySlug(slug: string) {
-		return axiosClassic<IProduct>({
+		const {data} = await axiosClassic<IProduct>({
 			url: `/products/by-slug/${slug}`,
 			method: 'GET'
 		})
+		return data
 	},
 	async getByCategory(categorySlug: string) {
 		return axiosClassic<IProduct[]>({

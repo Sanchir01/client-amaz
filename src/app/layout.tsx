@@ -8,6 +8,8 @@ import { getSiteUrl } from '@/config/url.config'
 import { NO_INDEX_PAGE, SITE_NAME } from '@/constants/app.constants'
 import type { Metadata } from 'next'
 
+import {Golos_Text} from 'next/font/google'
+
 export const metadata: Metadata = {
 	icons: {
 		icon: '/favicon.svg'
@@ -25,16 +27,24 @@ export const metadata: Metadata = {
 	...NO_INDEX_PAGE
 }
 
+const golos = Golos_Text({
+	display:'swap',
+	subsets:['latin','cyrillic-ext'],
+	style:['normal'],
+	weight:['400','500','600','700'],
+	variable:'--font-golos'
+})
+
 export default function Layout({ children }: PropsWithChildren<unknown>) {
 	return (
-		<html lang='ru'>
+		<html lang='ru' className={golos.variable}>
 			<body>
 				<Providers>
-					<div>
+					<div className='bg-secondary'>
 						<Header />
-						<main className='grid ' style={{ gridTemplateColumns: '1fr 4fr' }}>
+						<main className='grid ' style={{ gridTemplateColumns: '.8fr 4fr' }}>
 							<Sidebar />
-							<div className='p-12'>{children}</div>
+							<div className='p-12 pb-52 bg-bg-color rounded-tl-lg'>{children}</div>
 						</main>
 					</div>
 				</Providers>

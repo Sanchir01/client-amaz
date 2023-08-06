@@ -8,17 +8,17 @@ type TypeData = {
 
 export const ReviewsService = {
 	async getAll() {
-		return axiosClassic<IReview[]>({ url: '/rewiev', method: 'GET' })
+		return instance<IReview[]>({ url: '/rewiev', method: 'GET' })
 	},
 	async leave(productId: string, data: TypeData) {
-		return axiosClassic<IReview>({
+		return instance<IReview>({
 			url: `/rewiev/leave/${productId}`,
 			method: 'POST',
 			data
 		})
 	},
 	async getAverage(productId: number | string) {
-		return instance<number>({
+		return axiosClassic<number>({
 			url: `/rewiev/average-by-product/${productId}`,
 			method: 'GET'
 		})
