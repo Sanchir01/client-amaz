@@ -39,5 +39,5 @@ export const useFilters = () => {
 
 		updateQueryParam({ key, value })
 	}
-	return { updateQueryParam, queryParams, isFilterUpdated }
+	return { updateQueryParams, queryParams, isFilterUpdated }
 }
