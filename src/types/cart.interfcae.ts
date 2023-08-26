@@ -6,3 +6,4 @@ export interface ICartItem {
 	quantity: number
 	price: number
 }
+
